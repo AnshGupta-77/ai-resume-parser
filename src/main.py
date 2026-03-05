@@ -2,7 +2,7 @@ from preprocess import load_and_clean_data
 from model import build_features, train_cluster_model
 from scorer import score_candidate
 
-DATA_PATH = "../data/resume_dataset.csv"
+DATA_PATH = "E:/resume-parser-ai/data/resume_dataset.csv"
 
 skills_required = [
     "python",
