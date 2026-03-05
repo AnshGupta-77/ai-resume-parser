@@ -10,10 +10,12 @@ nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 def clean_text(text):
-    
-    text = text.lower()
 
-    text = re.sub(r'[^a-zA-Z]', ' ', text)
+    if pd.isna(text):
+        return ""
+
+    text = str(text).lower()
+    text = re.sub(r'[^a-zA-Z ]', ' ', text)
 
     tokens = word_tokenize(text)
 
@@ -26,6 +28,13 @@ def load_and_clean_data(path):
 
     df = pd.read_csv(path)
 
-    df['clean_resume'] = df['Resume'].apply(clean_text)
+    # Combine useful resume fields
+    df["resume_text"] = (
+        df["career_objective"].astype(str) + " " +
+        df["skills"].astype(str) + " " +
+        df["major_field_of_studies"].astype(str)
+    )
+
+    df["clean_resume"] = df["resume_text"].apply(clean_text)
 
     return df

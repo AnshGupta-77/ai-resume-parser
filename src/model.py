@@ -10,9 +10,9 @@ def build_features(resumes):
     return X, vectorizer
 
 
-def train_cluster_model(X, clusters=10):
+def train_cluster_model(X):
 
-    model = KMeans(n_clusters=clusters, random_state=42)
+    model = KMeans(n_clusters=5, random_state=42)
 
     model.fit(X)
 
