@@ -2,7 +2,7 @@ from preprocess import load_and_clean_data
 from model import build_features, train_cluster_model
 
 DATA_PATH = "E:/resume-parser-ai/data/resume_dataset.csv"
-
+    
 def main():
 
     df = load_and_clean_data(DATA_PATH)
